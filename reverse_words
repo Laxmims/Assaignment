@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+ 
+void main()
+{
+    /* Initialization and declaration of variables */
+    int i, j = 0, k = 0, len;
+    char str[100], str1[10][20], temp;
+ 
+    printf("enter the string :");
+    scanf("%[^\n]s", str);
+ 
+/* Read the content of str into another 2d str  */
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        /* Condition to check space and replace it with '\0' */ 
+        if (str[i] == ' ')
+        {
+            str1[k][j]='\0';
+            k++; /* Increamenting the k value */
+            j=0; /* Initializing j with 0 */
+        }
+        else
+        {
+            str1[k][j]=str[i]; /* If there is no sace just assign str to 2d string */
+            j++;
+        }
+    }
+    str1[k][j] = '\0';
+ 
+/* Reverses each word of a given string */
+    for (i = 0;i <= k;i++)
+    {
+        len = strlen(str1[i]);
+        for (j = 0; j < len-1; j++)
+        {
+            /* Reverses the words */
+            temp = str1[i][j];
+            str1[i][j] = str1[i][k];
+            str1[i][k] = temp;
+            len --;
+        }
+    }
+    for (i = 0;i <= k;i++)
+    {
+        printf("%s ", str1[i]);
+    }
+}
